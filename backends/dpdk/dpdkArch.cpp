@@ -986,6 +986,8 @@ SplitP4TableCommon::create_match_table(const IR::P4Table *tbl) {
         actionName = refMap->newName(tbl->name + "_set_group_id");
     } else if (implementation == TableImplementation::ACTION_PROFILE) {
         actionName = refMap->newName(tbl->name + "_set_member_id");
+    } else {
+        BUG("Unexpected table implementation type");
     }
     auto hidden = new IR::Annotations();
     hidden->add(new IR::Annotation(IR::Annotation::hiddenAnnotation, {}));
